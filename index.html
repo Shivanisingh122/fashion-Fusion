@@ -3,31 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fashion Finder - Clothing Search</title>
+    <title>Fashion Fusion - Clothing Search</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
-    <div class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold mb-6 text-center">Fashion Finder</h1>
-        <div class="max-w-md mx-auto">
-            <input type="text" id="searchInput" placeholder="Search for clothing..." class="w-full px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+<body class="bg-gradient-to-r from-purple-100 to-pink-100 min-h-screen">
+    <div class="container mx-auto px-4 py-12">
+        <h1 class="text-4xl font-bold mb-8 text-center text-purple-800">Fashion Fusion</h1>
+        <div class="max-w-md mx-auto mb-10">
+            <input type="text" id="searchInput" placeholder="Search for clothing..." class="w-full px-6 py-3 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-lg">
         </div>
-        <div id="searchResults" class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div id="searchResults" class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             <!-- Search results will be dynamically inserted here -->
         </div>
     </div>
 
     <script>
-        // Sample clothing data (in a real application, this would come from a backend API)
+        // Updated clothing data with real images and descriptions
         const clothingItems = [
-            { id: 1, name: "Blue Denim Jeans", price: 49.99, image: "https://www.vudu.co.in/cdn/shop/files/VibrantBlueDenim-VUDU1.jpg?v=1723135422&width=1080" },
-            { id: 2, name: "Red Cotton T-Shirt", price: 19.99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv6TAv6S1cUHy07UbDx6UXDvV1UiEJzT3Y-g&s" },
-            { id: 3, name: "Black Leather Jacket", price: 99.99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbweKIEVVVLOmzPzMBWEW17iGLt0bzaZ1sdA&s" },
-            { id: 4, name: "White Linen Dress", price: 79.99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK71rXP91E5ljgoE0gfV_pNdgfN46N78k8FA&s" },
-            { id: 5, name: "Gray Wool Sweater", price: 59.99, image: "https://assets.ajio.com/medias/sys_master/root/20231227/KKvc/658c2ac1afa4cf41f5ef6709/-473Wx593H-466923441-grey-MODEL.jpg" },
-            { id: 6, name: "Navy Blue Blazer", price: 89.99, image: "https://blackberrys.com/cdn/shop/files/textured-casual-blazer-in-navy-caden-blackberrys-clothing-1.jpg?v=1685953969" },
-            { id: 7, name: "Khaki Chino Pants", price: 39.99, image: "https://m.media-amazon.com/images/I/511ZsPAoNCL._AC_UY1100_.jpg" },
-            { id: 8, name: "Floral Print Skirt", price: 34.99, image: "https://assets.ajio.com/medias/sys_master/root/20230621/1TQQ/6492a4c242f9e729d76bcd5c/-473Wx593H-463935975-black-MODEL.jpg" },
+            { id: 1, name: "Vintage Denim Jacket", price: 79.99, image: "https://images.unsplash.com/photo-1516257984-b1b4d707412e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" },
+            { id: 2, name: "White Cotton Tee", price: 24.99, image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" },
+            { id: 3, name: "Leather Biker Jacket", price: 149.99, image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" },
+            { id: 4, name: "Floral Summer Dress", price: 59.99, image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=746&q=80" },
+            { id: 5, name: "Cozy Knit Sweater", price: 64.99, image: "https://images.unsplash.com/photo-1610901157620-340856d0a50f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" },
+            { id: 6, name: "Classic Trench Coat", price: 129.99, image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" },
+            { id: 7, name: "High-Waisted Jeans", price: 69.99, image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" },
+            { id: 8, name: "Boho Maxi Skirt", price: 54.99, image: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" },
         ];
 
         const searchInput = document.getElementById('searchInput');
@@ -38,14 +44,16 @@
             searchResults.innerHTML = '';
             items.forEach(item => {
                 const itemElement = document.createElement('div');
-                itemElement.className = 'bg-white rounded-lg shadow-md p-4';
+                itemElement.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105';
                 itemElement.innerHTML = `
-                    <div class="w-full h-40 mb-4 overflow-hidden rounded">
+                    <div class="w-full h-64 overflow-hidden">
                         <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
                     </div>
-                    <h2 class="text-lg font-semibold mb-2">${item.name}</h2>
-                    <p class="text-gray-600">$${item.price.toFixed(2)}</p>
-                    <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300">Add to Cart</button>
+                    <div class="p-6">
+                        <h2 class="text-xl font-semibold mb-2 text-gray-800">${item.name}</h2>
+                        <p class="text-purple-600 font-bold text-lg mb-4">$${item.price.toFixed(2)}</p>
+                        <button class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full hover:from-purple-600 hover:to-pink-600 transition duration-300 transform hover:scale-105">Add to Cart</button>
+                    </div>
                 `;
                 searchResults.appendChild(itemElement);
             });
